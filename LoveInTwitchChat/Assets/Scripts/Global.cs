@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class Global : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Global global;
+
+    void Awake()
     {
-        
+        if (global == null)
+        {
+            DontDestroyOnLoad(gameObject); //makes global persist across scenes
+            global = this;
+        }
+        else if (global != this)
+        {
+            Destroy(gameObject); //deletes copies of global which do not need to exist, so right version is used to get info from
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int playTime;               //The number of cycles the player has to woo their date.
+    public int currentDay;             //The current cycle the player is on.
+
+
 }

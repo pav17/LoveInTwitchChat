@@ -8,12 +8,12 @@ public class MapController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Resources.Load("prefab");
     }
 
     public void Park()
     {
-        //create prefab for scenes
+        //spawn prefab for place from resources folder
     }
 
     public void Cafe()
