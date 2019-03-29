@@ -22,5 +22,11 @@ public class Global : MonoBehaviour
     public int playTime;               //The number of cycles the player has to woo their date.
     public int currentDay;             //The current cycle the player is on.
 
+    public bool pollStatus;
+
+    public int parkVisits;
+    public int cafeVisits;
+    public int mallVisits;
+
 
 }

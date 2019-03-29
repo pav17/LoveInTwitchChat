@@ -13,7 +13,7 @@ public class DialogController : MonoBehaviour
     public Text option4text;
 
     // Start is called before the first frame update
-    void Instanstiate(string input1, string input2, string input3, string input4, string inputQuestion)
+    public void Create(string input1, string input2, string input3, string input4, string inputQuestion)
     {
         option1text.text = input1;
         option2text.text = input2;
@@ -22,9 +22,9 @@ public class DialogController : MonoBehaviour
         question.text = inputQuestion;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Poll()
     {
-        
+        Global.global.pollStatus = true;
+        //Poll Script
     }
 }
