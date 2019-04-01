@@ -28,5 +28,5 @@ public class Global : MonoBehaviour
     public int cafeVisits;
     public int mallVisits;
 
-
+    public string twitchName = "sulu244";
 }

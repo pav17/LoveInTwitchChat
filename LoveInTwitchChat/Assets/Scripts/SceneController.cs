@@ -6,11 +6,13 @@ public class SceneController : MonoBehaviour
 {
 
     GameObject dialog;
+    GameObject background;
 
     // Start is called before the first frame update
     void Start()
     {
         dialog = Resources.Load("Prefabs/DialogRoot") as GameObject;
+        background = Resources.Load("Prefabs/PlaceholderBackground") as GameObject;
     }
 
     // Update is called once per frame
@@ -19,11 +21,11 @@ public class SceneController : MonoBehaviour
         
     }
 
-    void StartConversation()
+    public void StartCafeConversation()
     {
-        GameObject newQuestion = Instantiate(dialog);
-        newQuestion.transform.position = new Vector3(0, 0, 0);
-        newQuestion.GetComponent<DialogController>().Create();
-        
+        GameObject newBackground = Instantiate(background);
+        GameObject newDialog = Instantiate(dialog);
+        Queue<string> newDialogQueue = DialogSorter.dialog.PullCafe();
+        newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue);
     }
 }
