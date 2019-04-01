@@ -103,15 +103,15 @@ public class TextboxController : MonoBehaviour
                 Global.global.pollStatus = false;
                 if(Global.global.pollChoice1 > Global.global.pollChoice2 && Global.global.pollChoice1 > Global.global.pollChoice3)
                 {
-                    sceneDialog.text = responseText.Dequeue() + PollResponse1.GetComponent<Text>().text;
+                    sceneDialog.text = responseText.Dequeue() + PollResponse1.GetComponent<Text>().text.TrimStart('!','1',':',' ');
                 }
                 else if (Global.global.pollChoice2 > Global.global.pollChoice1 && Global.global.pollChoice2 > Global.global.pollChoice3)
                 {
-                    sceneDialog.text = responseText.Dequeue() + PollResponse2.GetComponent<Text>().text;
+                    sceneDialog.text = responseText.Dequeue() + PollResponse2.GetComponent<Text>().text.TrimStart('!', '2', ':', ' ');
                 }
                 else if (Global.global.pollChoice3 > Global.global.pollChoice1 && Global.global.pollChoice3 > Global.global.pollChoice1)
                 {
-                    sceneDialog.text = responseText.Dequeue() + PollResponse3.GetComponent<Text>().text;
+                    sceneDialog.text = responseText.Dequeue() + PollResponse3.GetComponent<Text>().text.TrimStart('!', '3', ':', ' ');
                 }
                 else
                 {
