@@ -138,9 +138,9 @@ public class TextboxController : MonoBehaviour
         //start the poll
         Global.global.pollStatus = true;
         pollFlag = true;
-        PollResponse1.GetComponent<Text>().text = responseText.Dequeue();
-        PollResponse2.GetComponent<Text>().text = responseText.Dequeue();
-        PollResponse3.GetComponent<Text>().text = responseText.Dequeue();
+        PollResponse1.GetComponent<Text>().text = "!1: " + responseText.Dequeue();
+        PollResponse2.GetComponent<Text>().text = "!2: " + responseText.Dequeue();
+        PollResponse3.GetComponent<Text>().text = "!3: " + responseText.Dequeue();
     }
 
     void Poll1()
