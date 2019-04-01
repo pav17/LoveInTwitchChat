@@ -62,7 +62,7 @@ public class TextboxController : MonoBehaviour
         PollResponse2.SetActive(false);
         PollResponse3.SetActive(false);
 
-        pollTimer = 60.0f;
+        pollTimer = 20.0f;
     }
 
     void Update()
