@@ -8,6 +8,7 @@ public class DialogSorter : MonoBehaviour
     public static DialogSorter dialog;
 
     Queue<Queue<string>> Cafe;
+    Queue<Queue<string>> CafeResponse;
 
     void Awake()
     {
@@ -27,6 +28,7 @@ public class DialogSorter : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         Cafe = BuildCafe();
+        CafeResponse = BuildCafeResponse();
         //Queue<Queue<string>> Park = new Queue<Queue>();
         //Queue<Queue<string>> Mall = new Queue<Queue>();
 
@@ -35,7 +37,7 @@ public class DialogSorter : MonoBehaviour
     Queue<Queue<string>> BuildCafe()
     {
         Queue<Queue<string>> CafeConvo = new Queue<Queue<string>>();
-
+        
         Queue<string> Cafe1 = new Queue<string>();
         Cafe1.Enqueue("You walk into the cafe and get in line to order at the counter, when you notice Positive at the head of the line doing " +
             "their best to try to motivate the barista who, apparently, looked a little demotivated.");
@@ -51,9 +53,25 @@ public class DialogSorter : MonoBehaviour
         Cafe2.Enqueue("END");
         CafeConvo.Enqueue(Cafe2);
 
-        
-        
         return (CafeConvo);
+    }
+
+    Queue<Queue<string>> BuildCafeResponse()
+    {
+        Queue<Queue<string>> CafeConvoResponse = new Queue<Queue<string>>();
+
+        Queue<string> Cafe1Response = new Queue<string>();
+        Cafe1Response.Enqueue("Hey, good on you Positive, you cheered that invisible barista right up!");
+        Cafe1Response.Enqueue("Hey, now that is positively great, now can I get some coffee?");
+        Cafe1Response.Enqueue("Fuck off with all this positivity, now get me some of that sweet sweet bean juice");
+        Cafe1Response.Enqueue("Hey, thanks, those words really tickled my audio receptors!");
+        Cafe1Response.Enqueue("Wow, those words are really harshing my whole vibe.");
+        Cafe1Response.Enqueue("Hey, fuck you and your words!");
+        Cafe1Response.Enqueue("Positive: ");
+        Cafe1Response.Enqueue("END");
+        CafeConvoResponse.Enqueue(Cafe1Response);
+
+        return (CafeConvoResponse);
     }
 
     public Queue<string> PullCafe()
@@ -62,6 +80,10 @@ public class DialogSorter : MonoBehaviour
         return (conversation);
     }
 
-
+    public Queue<string> PullCafeResponse()
+    {
+        Queue<string> response = CafeResponse.Dequeue();
+        return (response);
+    }
 
 }

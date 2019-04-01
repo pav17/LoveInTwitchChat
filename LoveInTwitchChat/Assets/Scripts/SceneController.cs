@@ -26,6 +26,7 @@ public class SceneController : MonoBehaviour
         GameObject newBackground = Instantiate(background);
         GameObject newDialog = Instantiate(dialog);
         Queue<string> newDialogQueue = DialogSorter.dialog.PullCafe();
-        newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue);
+        Queue<string> newResponseQueue = DialogSorter.dialog.PullCafeResponse();
+        newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue);
     }
 }

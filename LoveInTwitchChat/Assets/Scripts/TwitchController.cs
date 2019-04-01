@@ -50,9 +50,17 @@ public class TwitchController : MonoBehaviour
             Help();
             helpFlag = true;
         }
-        else if (e.ChatMessage.Message == "!1" || e.ChatMessage.Message == "!2" || e.ChatMessage.Message == "!3")
+        else if (e.ChatMessage.Message == "!1" && Global.global.pollStatus == true)
         {
-            //apply to poll
+            Global.global.pollChoice1++;
+        }
+        else if (e.ChatMessage.Message == "!2" && Global.global.pollStatus == true)
+        {
+            Global.global.pollChoice2++;
+        }
+        else if(e.ChatMessage.Message == "!3" && Global.global.pollStatus == true)
+        {
+            Global.global.pollChoice3++;
         }
     }
 
