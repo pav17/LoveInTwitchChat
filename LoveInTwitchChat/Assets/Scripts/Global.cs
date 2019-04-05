@@ -31,5 +31,11 @@ public class Global : MonoBehaviour
     public int cafeVisits;
     public int mallVisits;
 
+    public int positiveOpinion;
+    public int negativeOpinion;
+
+    public int positiveInteractions = 0;
+    public int negativeInteractions = 0;
+
     public string twitchName = "sulu244";
 }

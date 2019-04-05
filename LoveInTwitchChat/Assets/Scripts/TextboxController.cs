@@ -15,6 +15,7 @@ public class TextboxController : MonoBehaviour
     GameObject PollResponse1;
     GameObject PollResponse2;
     GameObject PollResponse3;
+    GameObject ExitButton;
 
     Button PlayerButton1;
     Button PlayerButton2;
@@ -61,6 +62,10 @@ public class TextboxController : MonoBehaviour
         PollResponse1.SetActive(false);
         PollResponse2.SetActive(false);
         PollResponse3.SetActive(false);
+
+        ExitButton = GameObject.Find("Exit");
+
+        ExitButton.SetActive(false);
 
         pollTimer = 20.0f;
     }
@@ -121,6 +126,7 @@ public class TextboxController : MonoBehaviour
                 Global.global.pollChoice2 = 0;
                 Global.global.pollChoice3 = 0;
                 pollFlag = false;
+                ExitButton.SetActive(true);
             }
         }
     }

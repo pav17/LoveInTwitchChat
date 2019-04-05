@@ -5,13 +5,11 @@ using UnityEngine;
 public class SceneController : MonoBehaviour
 {
 
-    GameObject dialog;
     GameObject background;
 
     // Start is called before the first frame update
     void Start()
     {
-        dialog = Resources.Load("Prefabs/DialogRoot") as GameObject;
         background = Resources.Load("Prefabs/PlaceholderBackground") as GameObject;
     }
 
@@ -21,12 +19,21 @@ public class SceneController : MonoBehaviour
         
     }
 
-    public void StartCafeConversation()
+    public void EnterCafe()
     {
         GameObject newBackground = Instantiate(background);
-        GameObject newDialog = Instantiate(dialog);
-        Queue<string> newDialogQueue = DialogSorter.dialog.PullCafe();
-        Queue<string> newResponseQueue = DialogSorter.dialog.PullCafeResponse();
-        newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue);
+        newBackground.GetComponentInChildren<BackgroundController>().Initialize("Cafe");
+    }
+
+    public void EnterMall()
+    {
+        GameObject newBackground = Instantiate(background);
+        newBackground.GetComponentInChildren<BackgroundController>().Initialize("Mall");
+    }
+
+    public void EnterPark()
+    {
+        GameObject newBackground = Instantiate(background);
+        newBackground.GetComponentInChildren<BackgroundController>().Initialize("Park");
     }
 }
