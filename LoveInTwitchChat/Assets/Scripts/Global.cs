@@ -37,5 +37,5 @@ public class Global : MonoBehaviour
     public int positiveInteractions = 0;
     public int negativeInteractions = 0;
 
-    public string twitchName = "sulu244";
+    public string twitchName = "Cruiser_Ooi";
 }

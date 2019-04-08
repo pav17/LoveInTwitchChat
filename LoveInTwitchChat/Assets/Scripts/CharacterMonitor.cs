@@ -13,9 +13,21 @@ public class CharacterMonitor : MonoBehaviour
     int positiveOpinion;
     int negativeOpinion;
 
+    void Awake()
+    {
+        if (cm == null)
+        {
+            DontDestroyOnLoad(gameObject); //makes global persist across scenes
+            cm = this;
+        }
+        else if (cm != this)
+        {
+            Destroy(gameObject); //deletes copies of global which do not need to exist, so right version is used to get info from
+        }
+    }
+
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
         BuildPositive();
         BuildNegative();
         positiveOpinion = 0;
@@ -36,6 +48,8 @@ public class CharacterMonitor : MonoBehaviour
     {
         positiveLocation = new List<string>();
         positiveLocation.Add("Cafe");
+        positiveLocation.Add("Park");
+        positiveLocation.Add("Mall");
     }
 
     void BuildNegative()

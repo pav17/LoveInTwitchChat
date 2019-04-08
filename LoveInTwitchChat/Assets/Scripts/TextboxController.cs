@@ -16,6 +16,9 @@ public class TextboxController : MonoBehaviour
     GameObject PollResponse2;
     GameObject PollResponse3;
     GameObject ExitButton;
+    GameObject Cafe;
+    GameObject Mall;
+    GameObject Park;
 
     Button PlayerButton1;
     Button PlayerButton2;
@@ -64,7 +67,6 @@ public class TextboxController : MonoBehaviour
         PollResponse3.SetActive(false);
 
         ExitButton = GameObject.Find("Exit");
-
         ExitButton.SetActive(false);
 
         pollTimer = 20.0f;
@@ -96,6 +98,7 @@ public class TextboxController : MonoBehaviour
 
         if (exitFlag)
         {
+            GameObject.Find("PlaceholderBackground(Clone)").GetComponentInChildren<BackgroundController>().MapOn();
             Destroy(GameObject.Find("PlaceholderBackground(Clone)"));
             Destroy(GameObject.FindGameObjectWithTag("Dialog"));
         }

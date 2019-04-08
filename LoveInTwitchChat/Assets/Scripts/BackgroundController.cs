@@ -7,6 +7,9 @@ public class BackgroundController : MonoBehaviour
     GameObject dialog;
     GameObject positive;
     GameObject negative;
+    GameObject Cafe;
+    GameObject Mall;
+    GameObject Park;
     
 
     void Awake()
@@ -16,13 +19,21 @@ public class BackgroundController : MonoBehaviour
         negative = GameObject.Find("Negative");
         positive.SetActive(false);
         negative.SetActive(false);
+        Cafe = GameObject.Find("Cafe");
+        Mall = GameObject.Find("Mall");
+        Park = GameObject.Find("Park");
+        Cafe.SetActive(false);
+        Mall.SetActive(false);
+        Park.SetActive(false);
     }
 
     public void Initialize(string location)
     {
         string positiveLocation = CharacterMonitor.cm.GetPositiveLocation(Global.global.positiveInteractions);
+        Debug.Log(positiveLocation);
         string negativeLocation = CharacterMonitor.cm.GetNegativeLocation(Global.global.negativeInteractions);
-
+        Debug.Log(negativeLocation);
+        
         if (location == positiveLocation)
         {
             positive.SetActive(true);
@@ -34,12 +45,7 @@ public class BackgroundController : MonoBehaviour
         }
     }
 
-    void characterSelect()
-    {
-
-    }
-
-    void startCafeConversation()
+    public void startCafeConversation()
     {
         GameObject newDialog = Instantiate(dialog);
         Queue<string> newDialogQueue = DialogSorter.dialog.PullCafe();
@@ -47,4 +53,10 @@ public class BackgroundController : MonoBehaviour
         newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue);
     }
 
+    public void MapOn()
+    {
+        Cafe.SetActive(true);
+        Mall.SetActive(true);
+        Park.SetActive(true);
+    }
 }
