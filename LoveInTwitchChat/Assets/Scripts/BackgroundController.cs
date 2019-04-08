@@ -51,6 +51,7 @@ public class BackgroundController : MonoBehaviour
         Queue<string> newDialogQueue = DialogSorter.dialog.PullCafe();
         Queue<string> newResponseQueue = DialogSorter.dialog.PullCafeResponse();
         newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue);
+        Global.global.positiveInteractions++;
     }
 
     public void MapOn()

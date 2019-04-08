@@ -69,7 +69,7 @@ public class TextboxController : MonoBehaviour
         ExitButton = GameObject.Find("Exit");
         ExitButton.SetActive(false);
 
-        pollTimer = 20.0f;
+        pollTimer = 2.0f;
     }
 
     void Update()
