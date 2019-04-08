@@ -752,6 +752,7 @@ MonoBehaviour:
   playTime: 0
   currentDay: 0
   pollStatus: 0
+  pollTimer: 2
   pollChoice1: 0
   pollChoice2: 0
   pollChoice3: 0

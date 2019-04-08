@@ -23,6 +23,7 @@ public class Global : MonoBehaviour
     public int currentDay;             //The current cycle the player is on.
 
     public bool pollStatus;
+    public float pollTimer;
     public int pollChoice1;
     public int pollChoice2;
     public int pollChoice3;
