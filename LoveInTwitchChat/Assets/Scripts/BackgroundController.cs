@@ -60,4 +60,10 @@ public class BackgroundController : MonoBehaviour
         Mall.SetActive(true);
         Park.SetActive(true);
     }
+
+    public void Exit()
+    {
+        MapOn();
+        Destroy(GameObject.Find("PlaceholderBackground(Clone)"));
+    }
 }
