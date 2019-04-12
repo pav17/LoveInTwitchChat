@@ -6,8 +6,6 @@ public class OnPositiveClick : MonoBehaviour
 {
     public void OnMouseDown()
     {
-        GameObject.Find("TempBackground").GetComponent<BackgroundController>().startCafeConversation();
+        GameObject.Find("TempBackground").GetComponent<BackgroundController>().startPositiveConversation();
     }
-
-    
 }

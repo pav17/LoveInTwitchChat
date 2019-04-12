@@ -7,6 +7,7 @@ public class BackgroundController : MonoBehaviour
     GameObject dialog;
     GameObject positive;
     GameObject negative;
+    GameObject ExitButton;
     GameObject Cafe;
     GameObject Mall;
     GameObject Park;
@@ -25,6 +26,7 @@ public class BackgroundController : MonoBehaviour
         Cafe.SetActive(false);
         Mall.SetActive(false);
         Park.SetActive(false);
+        ExitButton = GameObject.Find("ExitButton");
     }
 
     public void Initialize(string location)
@@ -45,11 +47,12 @@ public class BackgroundController : MonoBehaviour
         }
     }
 
-    public void startCafeConversation()
+    public void startPositiveConversation()
     {
+        ExitButton.SetActive(false);
         GameObject newDialog = Instantiate(dialog);
-        Queue<string> newDialogQueue = DialogSorter.dialog.PullCafe();
-        Queue<string> newResponseQueue = DialogSorter.dialog.PullCafeResponse();
+        Queue<string> newDialogQueue = DialogSorter.dialog.PullPositive();
+        Queue<string> newResponseQueue = DialogSorter.dialog.PullPositiveResponse();
         newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue);
         Global.global.positiveInteractions++;
     }

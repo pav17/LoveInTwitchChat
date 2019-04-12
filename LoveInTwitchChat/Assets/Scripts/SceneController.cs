@@ -13,12 +13,6 @@ public class SceneController : MonoBehaviour
         background = Resources.Load("Prefabs/PlaceholderBackground") as GameObject;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void EnterCafe()
     {
         GameObject newBackground = Instantiate(background);
