@@ -109,17 +109,21 @@ public class TextboxController : MonoBehaviour
             if(pollTimer <= 0)
             {
                 Global.global.pollStatus = false;
+                string speaker = responseText.Dequeue();
                 if(Global.global.pollChoice1 > Global.global.pollChoice2 && Global.global.pollChoice1 > Global.global.pollChoice3)
                 {
-                    sceneDialog.text = responseText.Dequeue() + PollResponse1.GetComponent<Text>().text.TrimStart('!','1',':',' ');
+                    sceneDialog.text = speaker + PollResponse1.GetComponent<Text>().text.TrimStart('!','1',':',' ');
+                    OpinionSwitchboard(speaker, 1);
                 }
                 else if (Global.global.pollChoice2 > Global.global.pollChoice1 && Global.global.pollChoice2 > Global.global.pollChoice3)
                 {
-                    sceneDialog.text = responseText.Dequeue() + PollResponse2.GetComponent<Text>().text.TrimStart('!', '2', ':', ' ');
+                    sceneDialog.text = speaker + PollResponse2.GetComponent<Text>().text.TrimStart('!', '2', ':', ' ');
+                    OpinionSwitchboard(speaker, 2);
                 }
                 else if (Global.global.pollChoice3 > Global.global.pollChoice1 && Global.global.pollChoice3 > Global.global.pollChoice1)
                 {
-                    sceneDialog.text = responseText.Dequeue() + PollResponse3.GetComponent<Text>().text.TrimStart('!', '3', ':', ' ');
+                    sceneDialog.text = speaker + PollResponse3.GetComponent<Text>().text.TrimStart('!', '3', ':', ' ');
+                    OpinionSwitchboard(speaker, 3);
                 }
                 else
                 {
@@ -170,6 +174,17 @@ public class TextboxController : MonoBehaviour
         StartPoll(playerChoice);
     }
 
+    void OpinionSwitchboard(string speaker, int result)
+    {
+        if (speaker == "Positive: ")
+        {
+            CharacterMonitor.cm.PositiveOpinionChange(result);
+        }
+        else if (speaker == "Negative: ")
+        {
+            CharacterMonitor.cm.NegativeOpinionChange(result);
+        }
+    }
 
     public void CreateConversation(Queue<string> newConversation, Queue<string> newResponses)
     {

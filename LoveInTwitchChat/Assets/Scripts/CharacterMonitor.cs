@@ -17,12 +17,12 @@ public class CharacterMonitor : MonoBehaviour
     {
         if (cm == null)
         {
-            DontDestroyOnLoad(gameObject); //makes global persist across scenes
+            DontDestroyOnLoad(gameObject); 
             cm = this;
         }
         else if (cm != this)
         {
-            Destroy(gameObject); //deletes copies of global which do not need to exist, so right version is used to get info from
+            Destroy(gameObject); 
         }
     }
 
@@ -30,10 +30,42 @@ public class CharacterMonitor : MonoBehaviour
     {
         BuildPositive();
         BuildNegative();
-        positiveOpinion = 0;
-        negativeOpinion = 0;
+        Global.global.positiveOpinion = 0;
+        Global.global.negativeOpinion = 0;
     }
-    
+
+    public void PositiveOpinionChange(int choice)
+    {
+        if (choice == 1)
+        {
+            Global.global.positiveOpinion = Global.global.positiveOpinion + 5;
+        }
+        else if (choice == 2)
+        {
+            Global.global.positiveOpinion = Global.global.positiveOpinion + 2;
+        }
+        else if (choice == 3)
+        {
+            Global.global.positiveOpinion = Global.global.positiveOpinion - 5;
+        }
+    }
+
+    public void NegativeOpinionChange(int choice)
+    {
+        if (choice == 1)
+        {
+            Global.global.negativeOpinion = Global.global.negativeOpinion - 5;
+        }
+        else if (choice == 2)
+        {
+            Global.global.negativeOpinion = Global.global.negativeOpinion - 2;
+        }
+        else if (choice == 3)
+        {
+            Global.global.negativeOpinion = Global.global.negativeOpinion + 5;
+        }
+    }
+
     public string GetPositiveLocation(int index)
     {
         return (positiveLocation[index]);
