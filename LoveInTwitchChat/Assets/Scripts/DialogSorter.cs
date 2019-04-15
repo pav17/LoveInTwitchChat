@@ -9,6 +9,8 @@ public class DialogSorter : MonoBehaviour
 
     Queue<Queue<string>> Positive;
     Queue<Queue<string>> PositiveResponse;
+    Queue<Queue<string>> Negative;
+    Queue<Queue<string>> NegativeResponse;
 
     void Awake()
     {
@@ -30,7 +32,31 @@ public class DialogSorter : MonoBehaviour
         Positive = BuildPositive();
         PositiveResponse = BuildPositiveResponse();
     }
+    
+    /*
+    To create a new conversation follow the following template
 
+    In BuildCharacter() insert the following:
+
+        Queue<string> Character# = new Queue<string>();
+        Character#.Enqueue("Character: This is an example.");
+        Character#.Enqueue("END");
+        CharacterConvo.Enqueue(Character#);
+
+    Now in BuildCharacterResponse:
+
+        Queue<string> Character#Response = new Queue<string>();
+        Character#Response.Enqueue("The first three enqueue commands are the players options");
+        Character#Response.Enqueue("The first three enqueue commands are the players options");
+        Character#Response.Enqueue("The first three enqueue commands are the players options");
+        Character#Response.Enqueue("Good chat option");
+        Character#Response.Enqueue("Middle chat Option");
+        Character#Response.Enqueue("Bad chat option");
+        Character#Response.Enqueue("The sixth command is the chracters name");
+        Character#Response.Enqueue("END");
+        CharacterConvoResponse.Enqueue(Character#Response);
+
+    */
     Queue<Queue<string>> BuildPositive()
     {
         Queue<Queue<string>> PositiveConvo = new Queue<Queue<string>>();
@@ -80,6 +106,15 @@ public class DialogSorter : MonoBehaviour
         PositiveConvoResponse.Enqueue(Positive2Response);
 
         return (PositiveConvoResponse);
+    }
+
+    Queue<Queue<string>> BuildNegative()
+    {
+        Queue<Queue<string>> NegativeConvo = new Queue<Queue<string>>();
+
+        Queue<string> Positive1Response = new Queue<string>();
+        
+return (NegativeConvo);
     }
 
     public Queue<string> PullPositive()
