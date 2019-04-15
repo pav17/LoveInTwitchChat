@@ -19,6 +19,7 @@ public class TextboxController : MonoBehaviour
     GameObject Cafe;
     GameObject Mall;
     GameObject Park;
+    GameObject PollBackground;
 
     Button PlayerButton1;
     Button PlayerButton2;
@@ -69,6 +70,8 @@ public class TextboxController : MonoBehaviour
         ExitButton = GameObject.Find("Exit");
         ExitButton.SetActive(false);
 
+        PollBackground = GameObject.Find("PollBackground");
+        PollBackground.SetActive(false);
         pollTimer = Global.global.pollTimer;
     }
 
@@ -147,6 +150,7 @@ public class TextboxController : MonoBehaviour
         PollResponse1.SetActive(true);
         PollResponse2.SetActive(true);
         PollResponse3.SetActive(true);
+        PollBackground.SetActive(true);
         sceneDialog.text = "Me: " + playerChoice;
         //start the poll
         Global.global.pollStatus = true;
