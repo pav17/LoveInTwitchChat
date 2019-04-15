@@ -72,7 +72,9 @@ public class DialogSorter : MonoBehaviour
         PositiveConvo.Enqueue(Positive1);
 
         Queue<string> Positive2 = new Queue<string>();
-        Positive2.Enqueue("This is a test sentance.");
+        Positive2.Enqueue("You wander your way into the park for a relaxing stroll by the pond when you spot Positive there feeding some ducks.");
+        Positive2.Enqueue("Positive: Look at all you lovely little ducks! Aren’t you just the cutest?");
+        Positive2.Enqueue("The ducks are not cute, they look angry and ready to attack. What should you do?");
         Positive2.Enqueue("END");
         PositiveConvo.Enqueue(Positive2);
 
@@ -95,12 +97,12 @@ public class DialogSorter : MonoBehaviour
         PositiveConvoResponse.Enqueue(Positive1Response);
 
         Queue<string> Positive2Response = new Queue<string>();
-        Positive2Response.Enqueue("Test1");
-        Positive2Response.Enqueue("Test2");
-        Positive2Response.Enqueue("Test3");
-        Positive2Response.Enqueue("Test Response 1");
-        Positive2Response.Enqueue("Test Response 2");
-        Positive2Response.Enqueue("Test Response 3");
+        Positive2Response.Enqueue("Look out, those ducks are deadly! *Chucks grenade into the middle of the ducks*");
+        Positive2Response.Enqueue("Wow, these ducks sure are cute! *Let them chew on your hand*");
+        Positive2Response.Enqueue("*Walk away while positive is mauled by ducks*");
+        Positive2Response.Enqueue("Ha Ha, this is so fun!");
+        Positive2Response.Enqueue("You certainly can cater to my programming!");
+        Positive2Response.Enqueue("Duck off!");
         Positive2Response.Enqueue("Positive: ");
         Positive2Response.Enqueue("END");
         PositiveConvoResponse.Enqueue(Positive2Response);
