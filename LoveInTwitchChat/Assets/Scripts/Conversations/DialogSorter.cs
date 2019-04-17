@@ -28,7 +28,6 @@ public class DialogSorter : MonoBehaviour
     
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
         Positive = BuildPositive();
         PositiveResponse = BuildPositiveResponse();
         Negative = BuildNegative();
@@ -42,6 +41,9 @@ public class DialogSorter : MonoBehaviour
 
         Queue<string> Character# = new Queue<string>();
         Character#.Enqueue("Character: This is an example.");
+    
+    Include as many of the above line as necessary, each line will appear as its own block of text.
+        
         Character#.Enqueue("END");
         CharacterConvo.Enqueue(Character#);
 
@@ -59,6 +61,8 @@ public class DialogSorter : MonoBehaviour
         CharacterConvoResponse.Enqueue(Character#Response);
 
     */
+
+    //Create the text that shows up before the player dialog choice
     Queue<Queue<string>> BuildPositive()
     {
         Queue<Queue<string>> PositiveConvo = new Queue<Queue<string>>();
@@ -83,6 +87,7 @@ public class DialogSorter : MonoBehaviour
         return (PositiveConvo);
     }
 
+    //create the dialog choices for the player and the chat
     Queue<Queue<string>> BuildPositiveResponse()
     {
         Queue<Queue<string>> PositiveConvoResponse = new Queue<Queue<string>>();
@@ -129,25 +134,25 @@ public class DialogSorter : MonoBehaviour
 
         return (NegativeConvoResponse);
     }
-
+    //get the full conversation for positive
     public Queue<string> PullPositive()
     {
         Queue<string> conversation = Positive.Dequeue();
         return (conversation);
     }
-
+    //get the responses to match the conversation for positive
     public Queue<string> PullPositiveResponse()
     {
         Queue<string> response = PositiveResponse.Dequeue();
         return (response);
     }
-
+    //get the full conversation for negative
     public Queue<string> PullNegative()
     {
         Queue<string> conversation = Negative.Dequeue();
         return (conversation);
     }
-
+    //get the responses to match the conversation for negative
     public Queue<string> PullNegativeResponse()
     {
         Queue<string> response = NegativeResponse.Dequeue();
