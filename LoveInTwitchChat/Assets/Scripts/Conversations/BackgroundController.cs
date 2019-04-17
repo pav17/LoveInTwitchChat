@@ -109,6 +109,16 @@ public class BackgroundController : MonoBehaviour
         Global.global.positiveInteractions++;
     }
 
+    public void startNegativeConversation()
+    {
+        ExitButton.SetActive(false);
+        GameObject newDialog = Instantiate(dialog);
+        Queue<string> newDialogQueue = DialogSorter.dialog.PullNegative();
+        Queue<string> newResponseQueue = DialogSorter.dialog.PullNegativeResponse();
+        newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue);
+        Global.global.negativeInteractions++;
+    }
+
     public void MapOn()
     {
         Cafe.SetActive(true);
