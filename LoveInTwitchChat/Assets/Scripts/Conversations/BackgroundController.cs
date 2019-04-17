@@ -12,6 +12,7 @@ public class BackgroundController : MonoBehaviour
     GameObject Cafe;
     GameObject Mall;
     GameObject Park;
+    GameObject Opinion;
     public Sprite CafeImage;
     public Sprite MallImage;
     public Sprite ParkImage;
@@ -20,6 +21,7 @@ public class BackgroundController : MonoBehaviour
     public AudioClip mallBackgroundAudio;
     public AudioClip parkBackgroundAudio;
     AudioSource backgroundSource;
+    Text OpinionText;
 
     void Awake()
     {
@@ -35,6 +37,9 @@ public class BackgroundController : MonoBehaviour
         Mall.SetActive(false);
         Park.SetActive(false);
         ExitButton = GameObject.Find("ExitButton");
+        Opinion = GameObject.Find("Opinion");
+        OpinionText = Opinion.GetComponent<Text>();
+        Opinion.SetActive(false);
         backgroundSource = gameObject.GetComponent<AudioSource>();
 
     }
@@ -102,6 +107,8 @@ public class BackgroundController : MonoBehaviour
     public void startPositiveConversation()
     {
         ExitButton.SetActive(false);
+        Opinion.SetActive(true);
+        OpinionText.text = "Positives opinion: " + Global.global.positiveOpinion.ToString();
         GameObject newDialog = Instantiate(dialog);
         Queue<string> newDialogQueue = DialogSorter.dialog.PullPositive();
         Queue<string> newResponseQueue = DialogSorter.dialog.PullPositiveResponse();
@@ -112,10 +119,12 @@ public class BackgroundController : MonoBehaviour
     public void startNegativeConversation()
     {
         ExitButton.SetActive(false);
+        Opinion.SetActive(true);
+        OpinionText.text = "Negatives opinion: " + Global.global.negativeOpinion.ToString();
         GameObject newDialog = Instantiate(dialog);
         Queue<string> newDialogQueue = DialogSorter.dialog.PullNegative();
         Queue<string> newResponseQueue = DialogSorter.dialog.PullNegativeResponse();
-        newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue);
+        newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue); 
         Global.global.negativeInteractions++;
     }
 

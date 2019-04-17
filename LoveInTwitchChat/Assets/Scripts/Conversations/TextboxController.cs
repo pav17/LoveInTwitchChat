@@ -20,10 +20,13 @@ public class TextboxController : MonoBehaviour
     GameObject Mall;
     GameObject Park;
     GameObject PollBackground;
+    GameObject Opinion;
 
     Button PlayerButton1;
     Button PlayerButton2;
     Button PlayerButton3;
+
+    Text OpinionText;
 
     //Text Queues
     Queue<string> sceneText;
@@ -73,11 +76,13 @@ public class TextboxController : MonoBehaviour
         PollBackground = GameObject.Find("PollBackground");
         PollBackground.SetActive(false);
         pollTimer = Global.global.pollTimer;
+
+        Opinion = GameObject.Find("Opinion");
+        OpinionText = Opinion.GetComponent<Text>();
     }
 
     void Update()
     {
-        //if (Input.GetKeyUp(KeyCode.Return))
         if (continueFlag)
         {
             continueFlag = false;
@@ -183,10 +188,12 @@ public class TextboxController : MonoBehaviour
         if (speaker == "Positive: ")
         {
             CharacterMonitor.cm.PositiveOpinionChange(result);
+            OpinionText.text = "Positives opinion: " + Global.global.positiveOpinion.ToString();
         }
         else if (speaker == "Negative: ")
         {
             CharacterMonitor.cm.NegativeOpinionChange(result);
+            OpinionText.text = "Negatives opinion: " + Global.global.negativeOpinion.ToString();
         }
     }
 
