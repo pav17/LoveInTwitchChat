@@ -31,6 +31,8 @@ public class DialogSorter : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Positive = BuildPositive();
         PositiveResponse = BuildPositiveResponse();
+        Negative = BuildNegative();
+        NegativeResponse = BuildNegativeResponse();
     }
     
     /*
@@ -114,9 +116,18 @@ public class DialogSorter : MonoBehaviour
     {
         Queue<Queue<string>> NegativeConvo = new Queue<Queue<string>>();
 
-        Queue<string> Positive1Response = new Queue<string>();
+        Queue<string> Negative1Response = new Queue<string>();
         
-return (NegativeConvo);
+        return (NegativeConvo);
+    }
+
+    Queue<Queue<string>> BuildNegativeResponse()
+    {
+        Queue<Queue<string>> NegativeConvoResponse = new Queue<Queue<string>>();
+
+        Queue<string> Negative1Response = new Queue<string>();
+
+        return (NegativeConvoResponse);
     }
 
     public Queue<string> PullPositive()
@@ -131,4 +142,15 @@ return (NegativeConvo);
         return (response);
     }
 
+    public Queue<string> PullNegative()
+    {
+        Queue<string> conversation = Negative.Dequeue();
+        return (conversation);
+    }
+
+    public Queue<string> PullNegativeResponse()
+    {
+        Queue<string> response = NegativeResponse.Dequeue();
+        return (response);
+    }
 }
