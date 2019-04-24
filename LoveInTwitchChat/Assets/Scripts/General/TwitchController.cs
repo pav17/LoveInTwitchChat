@@ -67,7 +67,7 @@ public class TwitchController : MonoBehaviour
     //the help message
     private void Help()
     {
-        client.SendMessage(client.JoinedChannels[0], "Welcome to Herding Chats! You can use chat commands to help the cats avoid the player!" +
-            " The valid commands are: !Up, !Down, !Left, !Right. Alternatively, you can use !u, !d, !l, !r");
+        client.SendMessage(client.JoinedChannels[0], "Welcome to Love Blooms! You can vote on how the characters in the game react to the players dialog options!" +
+            " The valid commands are: !1, !2, !3");
     }
 }
