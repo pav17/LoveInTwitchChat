@@ -20,13 +20,12 @@ public class TextboxController : MonoBehaviour
     GameObject Mall;
     GameObject Park;
     GameObject PollBackground;
-    GameObject Opinion;
+    GameObject Background;
 
+    //Buttons
     Button PlayerButton1;
     Button PlayerButton2;
     Button PlayerButton3;
-
-    Text OpinionText;
 
     //Text Queues
     Queue<string> sceneText;
@@ -77,8 +76,7 @@ public class TextboxController : MonoBehaviour
         PollBackground.SetActive(false);
         pollTimer = Global.global.pollTimer;
 
-        Opinion = GameObject.Find("Opinion");
-        OpinionText = Opinion.GetComponent<Text>();
+        Background = GameObject.Find("TempBackground");
     }
 
     void Update()
@@ -121,17 +119,17 @@ public class TextboxController : MonoBehaviour
                 if(Global.global.pollChoice1 > Global.global.pollChoice2 && Global.global.pollChoice1 > Global.global.pollChoice3)
                 {
                     sceneDialog.text = speaker + PollResponse1.GetComponent<Text>().text.TrimStart('!','1',':',' ');
-                    OpinionSwitchboard(speaker, 1);
+                    Background.GetComponent<BackgroundController>().OpinionSwitchboard(speaker, 1);
                 }
                 else if (Global.global.pollChoice2 > Global.global.pollChoice1 && Global.global.pollChoice2 > Global.global.pollChoice3)
                 {
                     sceneDialog.text = speaker + PollResponse2.GetComponent<Text>().text.TrimStart('!', '2', ':', ' ');
-                    OpinionSwitchboard(speaker, 2);
+                    Background.GetComponent<BackgroundController>().OpinionSwitchboard(speaker, 2);
                 }
                 else if (Global.global.pollChoice3 > Global.global.pollChoice1 && Global.global.pollChoice3 > Global.global.pollChoice1)
                 {
                     sceneDialog.text = speaker + PollResponse3.GetComponent<Text>().text.TrimStart('!', '3', ':', ' ');
-                    OpinionSwitchboard(speaker, 3);
+                    Background.GetComponent<BackgroundController>().OpinionSwitchboard(speaker, 3);
                 }
                 else
                 {
@@ -181,20 +179,6 @@ public class TextboxController : MonoBehaviour
     {
         string playerChoice = PlayerChoice3.GetComponentInChildren<Text>().text;
         StartPoll(playerChoice);
-    }
-
-    void OpinionSwitchboard(string speaker, int result)
-    {
-        if (speaker == "Positive: ")
-        {
-            CharacterMonitor.cm.PositiveOpinionChange(result);
-            OpinionText.text = "Positives opinion: " + Global.global.positiveOpinion.ToString();
-        }
-        else if (speaker == "Negative: ")
-        {
-            CharacterMonitor.cm.NegativeOpinionChange(result);
-            OpinionText.text = "Negatives opinion: " + Global.global.negativeOpinion.ToString();
-        }
     }
 
     public void CreateConversation(Queue<string> newConversation, Queue<string> newResponses)

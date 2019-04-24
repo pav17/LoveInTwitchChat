@@ -13,6 +13,7 @@ public class BackgroundController : MonoBehaviour
     GameObject Mall;
     GameObject Park;
     GameObject Opinion;
+    GameObject OpinionBackground;
     public Sprite CafeImage;
     public Sprite MallImage;
     public Sprite ParkImage;
@@ -38,8 +39,10 @@ public class BackgroundController : MonoBehaviour
         Park.SetActive(false);
         ExitButton = GameObject.Find("ExitButton");
         Opinion = GameObject.Find("Opinion");
+        OpinionBackground = GameObject.Find("OpinionBackground");
         OpinionText = Opinion.GetComponent<Text>();
         Opinion.SetActive(false);
+        OpinionBackground.SetActive(false);
         backgroundSource = gameObject.GetComponent<AudioSource>();
 
     }
@@ -107,25 +110,41 @@ public class BackgroundController : MonoBehaviour
     public void startPositiveConversation()
     {
         ExitButton.SetActive(false);
-        Opinion.SetActive(true);
-        OpinionText.text = "Positives opinion: " + Global.global.positiveOpinion.ToString();
         GameObject newDialog = Instantiate(dialog);
         Queue<string> newDialogQueue = DialogSorter.dialog.PullPositive();
         Queue<string> newResponseQueue = DialogSorter.dialog.PullPositiveResponse();
         newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue);
+        Opinion.SetActive(true);
+        OpinionBackground.SetActive(true);
+        OpinionText.text = "Positives opinion: " + Global.global.positiveOpinion.ToString();
         Global.global.positiveInteractions++;
     }
 
     public void startNegativeConversation()
     {
         ExitButton.SetActive(false);
-        Opinion.SetActive(true);
-        OpinionText.text = "Negatives opinion: " + Global.global.negativeOpinion.ToString();
         GameObject newDialog = Instantiate(dialog);
         Queue<string> newDialogQueue = DialogSorter.dialog.PullNegative();
         Queue<string> newResponseQueue = DialogSorter.dialog.PullNegativeResponse();
-        newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue); 
+        newDialog.GetComponentInChildren<TextboxController>().CreateConversation(newDialogQueue, newResponseQueue);
+        Opinion.SetActive(true);
+        OpinionBackground.SetActive(true);
+        OpinionText.text = "Negatives opinion: " + Global.global.negativeOpinion.ToString();
         Global.global.negativeInteractions++;
+    }
+
+    public void OpinionSwitchboard(string speaker, int result)
+    {
+        if (speaker == "Positive: ")
+        {
+            CharacterMonitor.cm.PositiveOpinionChange(result);
+            OpinionText.text = "Positives opinion: " + Global.global.positiveOpinion.ToString();
+        }
+        else if (speaker == "Negative: ")
+        {
+            CharacterMonitor.cm.NegativeOpinionChange(result);
+            OpinionText.text = "Negatives opinion: " + Global.global.negativeOpinion.ToString();
+        }
     }
 
     public void MapOn()
