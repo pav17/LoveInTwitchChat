@@ -141,9 +141,52 @@ public class TextboxController : MonoBehaviour
                     sceneDialog.text = speaker + PollResponse3.GetComponent<Text>().text.TrimStart('!', '3', ':', ' ');
                     Background.GetComponent<BackgroundController>().OpinionSwitchboard(speaker, 3);
                 }
-                else
+                else if (Global.global.pollChoice1 == Global.global.pollChoice2)
                 {
-                    sceneDialog.text = "It was a tie, I'll figure that out later! -Per";
+                    float r = Random.Range(0, 1);
+                    if (r >= .5)
+                    {
+                        sceneDialog.text = speaker + PollResponse1.GetComponent<Text>().text.TrimStart('!', '1', ':', ' ');
+                        Background.GetComponent<BackgroundController>().OpinionSwitchboard(speaker, 1);
+                    }
+                    else
+                    {
+                        sceneDialog.text = speaker + PollResponse2.GetComponent<Text>().text.TrimStart('!', '2', ':', ' ');
+                        Background.GetComponent<BackgroundController>().OpinionSwitchboard(speaker, 2);
+                    }
+                }
+                else if (Global.global.pollChoice2 == Global.global.pollChoice3)
+                {
+                    float r = Random.Range(0, 1);
+                    if (r >= .5)
+                    {
+                        sceneDialog.text = speaker + PollResponse2.GetComponent<Text>().text.TrimStart('!', '1', ':', ' ');
+                        Background.GetComponent<BackgroundController>().OpinionSwitchboard(speaker, 2);
+                    }
+                    else
+                    {
+                        sceneDialog.text = speaker + PollResponse3.GetComponent<Text>().text.TrimStart('!', '2', ':', ' ');
+                        Background.GetComponent<BackgroundController>().OpinionSwitchboard(speaker, 3);
+                    }
+                }
+                else if (Global.global.pollChoice3 == Global.global.pollChoice1)
+                {
+                    float r = Random.Range(0, 1);
+                    if (r >= .5)
+                    {
+                        sceneDialog.text = speaker + PollResponse3.GetComponent<Text>().text.TrimStart('!', '1', ':', ' ');
+                        Background.GetComponent<BackgroundController>().OpinionSwitchboard(speaker, 3);
+                    }
+                    else
+                    {
+                        sceneDialog.text = speaker + PollResponse1.GetComponent<Text>().text.TrimStart('!', '2', ':', ' ');
+                        Background.GetComponent<BackgroundController>().OpinionSwitchboard(speaker, 1);
+                    }
+                }
+                else 
+                {
+                    Debug.Log("weird error");
+                    //sceneDialog.text = "It was a tie, I'll figure that out later! -Per";
                 }
                 Global.global.pollChoice1 = 0;
                 Global.global.pollChoice2 = 0;
