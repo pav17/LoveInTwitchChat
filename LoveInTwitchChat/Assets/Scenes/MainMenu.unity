@@ -657,7 +657,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 0.48584908, b: 0.7429246, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1546,7 +1546,7 @@ MonoBehaviour:
   playTime: 0
   currentDay: 0
   pollStatus: 0
-  pollTimer: 2
+  pollTimer: 20
   pollChoice1: 0
   pollChoice2: 0
   pollChoice3: 0
@@ -1557,7 +1557,7 @@ MonoBehaviour:
   negativeOpinion: 0
   positiveInteractions: 0
   negativeInteractions: 0
-  twitchName: sulu244
+  twitchName: 
 --- !u!4 &1974977899
 Transform:
   m_ObjectHideFlags: 0
