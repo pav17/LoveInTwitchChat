@@ -32,6 +32,9 @@ public class OptionsController : MonoBehaviour
         {
             Global.global.twitchName = username.text;
         }
-        Global.global.pollTimer = pollTimer.text;
+        if (pollTimer.text != "")
+        {
+            Global.global.pollTimer = float.Parse(pollTimer.text);
+        }
     }
 }
