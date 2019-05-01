@@ -88,11 +88,21 @@ public class CharacterMonitor : MonoBehaviour
         positiveLocation.Add("Mall");
         positiveLocation.Add("Cafe");
         positiveLocation.Add("Mall");
+        positiveLocation.Add("Cafe");
     }
 
     void BuildNegative()
     {
         negativeLocation = new List<string>();
+        negativeLocation.Add("Park");
         negativeLocation.Add("Mall");
+        negativeLocation.Add("Cafe");
+        negativeLocation.Add("Mall");
+        negativeLocation.Add("Cafe");
+        negativeLocation.Add("Park");
+        negativeLocation.Add("Mall");
+        negativeLocation.Add("Park");
+        negativeLocation.Add("Cafe");
+        negativeLocation.Add("Cafe");
     }
 }
