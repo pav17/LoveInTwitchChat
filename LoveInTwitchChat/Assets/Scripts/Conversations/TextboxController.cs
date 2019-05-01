@@ -8,6 +8,9 @@ public class TextboxController : MonoBehaviour
 
     //UI
     Text sceneDialog;
+    Text pollText1;
+    Text pollText2;
+    Text pollText3;
     GameObject PlayerChoice1;
     GameObject PlayerChoice2;
     GameObject PlayerChoice3;
@@ -64,6 +67,10 @@ public class TextboxController : MonoBehaviour
         PollResponse2 = GameObject.Find("PollResponse2");
         PollResponse3 = GameObject.Find("PollResponse3");
 
+        pollText1 = GameObject.Find("PollText1").GetComponent<Text>();
+        pollText2 = GameObject.Find("PollText2").GetComponent<Text>();
+        pollText3 = GameObject.Find("PollText3").GetComponent<Text>();
+
         PollInstructions.SetActive(false);
         PollResponse1.SetActive(false);
         PollResponse2.SetActive(false);
@@ -112,7 +119,10 @@ public class TextboxController : MonoBehaviour
         if (pollFlag)
         {
             pollTimer = pollTimer - Time.deltaTime;
-            if(pollTimer <= 0)
+            pollText1.text = Global.global.pollChoice1.ToString();
+            pollText2.text = Global.global.pollChoice2.ToString();
+            pollText3.text = Global.global.pollChoice3.ToString();
+            if (pollTimer <= 0)
             {
                 Global.global.pollStatus = false;
                 string speaker = responseText.Dequeue();
